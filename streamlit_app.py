@@ -111,3 +111,8 @@ if len(countries_in_subset) != len(countries):
     else:
         missing = set(countries) - set(countries_in_subset)
         st.write("No data available for " + ", ".join(missing) + ".")
+
+### Project Changes ###
+
+bci_df = pd.read_csv("final_data.csv")
+print(bci_df.head())
