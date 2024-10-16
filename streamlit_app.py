@@ -96,9 +96,9 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 )
 
 ## Print linked chart and unlinked charts
-st.title("{year} Snapshot")
+st.header("{year} Snapshot")
 st.altair_chart(charttotal, use_container_width=True)
-st.title("Trends Over Time")
+st.header("Trends Over Time")
 st.altair_chart(chart3|chart4, use_container_width=True)
 
 countries_in_subset = subset["Country"].unique()
