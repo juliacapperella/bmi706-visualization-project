@@ -92,13 +92,13 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 st.altair_chart(charttotal, use_container_width=True)
 # st.altair_chart(chart3, use_container_width=True)
 
-countries_in_subset = subset["CountryTerritoryArea"].unique()
-if len(countries_in_subset) != len(countries):
-    if len(countries_in_subset) == 0:
-        st.write("No data avaiable for given subset.")
-    else:
-        missing = set(countries) - set(countries_in_subset)
-        st.write("No data available for " + ", ".join(missing) + ".")
+# countries_in_subset = subset["CountryTerritoryArea"].unique()
+# if len(countries_in_subset) != len(countries):
+#     if len(countries_in_subset) == 0:
+#         st.write("No data avaiable for given subset.")
+#     else:
+#         missing = set(countries) - set(countries_in_subset)
+#         st.write("No data available for " + ", ".join(missing) + ".")
 
 
 
