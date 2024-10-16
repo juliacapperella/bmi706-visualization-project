@@ -72,6 +72,7 @@ chart3 = alt.Chart(subset2).mark_line(
     tooltip=["gghed_gdp"]
 ).properties(
     title=f"Health expenditures per year",
+    width=800
 )
 
 ## Create chart 4 -- (unlinked) line chart of year and BCI per million population
@@ -84,6 +85,7 @@ chart4 = alt.Chart(subset2).mark_line(
     tooltip=["sum(BCIs per million population)"]
 ).properties(
     title=f"BCIs per million population per year",
+    width=800
 )
 
 ## Combine linked charts
