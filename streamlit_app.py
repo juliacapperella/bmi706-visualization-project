@@ -69,7 +69,7 @@ brush = alt.selection_interval( encodings=['x'])
 
 ## Create chart 3 -- (unlinked) line chart of year and health expenditure
 chart3 = alt.Chart(subset2).mark_line(
-    point=True
+    #point=True
 ).encode(
     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
     y=alt.Y("gghed_gdp:Q", axis=alt.Axis(title='Health Expenditure')),
