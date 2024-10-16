@@ -69,7 +69,7 @@ chart = alt.Chart(subset).mark_rect().encode(
 chart2 = alt.Chart(subset).mark_bar().encode(
     x=alt.X("gghed_gdp", title="Domestic Health Expenditure as Percent of GDP", axis=alt.Axis(tickMinStep=50000000)),
     y=alt.Y("CountryTerritoryArea", sort="-x"),
-    tooltip=["gghed_gdp","Country"],
+    tooltip=["gghed_gdp","CountryTerritoryArea"],
 )
 
 # chart3 = alt.Chart(subset).mark_line(
