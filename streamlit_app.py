@@ -20,8 +20,7 @@ st.write("## Antimicrobial Resistance")
 
 ### P2.1 ###
 # replace with st.slider
-year = st.slider("Year", df["Year"].min(), df["Year"].max())
-# year = st.slider("Year", 2016, 2022)
+year = st.sidebar.slider("Year", df["Year"].min(), df["Year"].max())
 subset = df[df["Year"] == year]
 ### P2.1 ###
 
@@ -39,7 +38,7 @@ default = [
     "Madagascar",
     "Singapore"
 ]
-countries = st.multiselect("Countries",df["CountryTerritoryArea"].unique(), default)
+countries = st.sidebar.multiselect("Countries",df["CountryTerritoryArea"].unique(), default)
 subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 subset2 = df[df["CountryTerritoryArea"].isin(countries)]
 ### P2.3 ###
@@ -47,10 +46,10 @@ subset2 = df[df["CountryTerritoryArea"].isin(countries)]
 
 ### P2.4 ###
 # replace with st.selectbox
-infection = st.selectbox("Infectious Syndrome",df["Infectious Syndrome"].unique())
+infection = st.sidebar.selectbox("Infectious Syndrome",df["Infectious Syndrome"].unique())
 subset = subset[subset["Infectious Syndrome"] == infection]
 
-bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
+bacteria = st.sidebar.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 ### P2.4 ###
 
