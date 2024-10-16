@@ -56,15 +56,24 @@ subset = subset[subset["Bacterial Pathogen"] == bacteria]
 
 ### P2.5 ###
  
-# chart = alt.Chart(subset).mark_rect().encode(
-#     x=alt.X("Age", sort=ages),
-#     y=alt.Y("Country"),
-#     color=alt.Color("Rate:Q", scale=alt.Scale(type="log",domain=(0.01, 1000), clamp=True),
-#                     title="Mortality rate per 100k"),
-#     tooltip=["Rate"],
-# ).properties(
-#     title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
-# )
+chart = alt.Chart(subset).mark_rect().encode(
+    x=alt.X("Antibiotic Group"),
+    y=alt.Y("CountryTerritoryArea"),
+    color=alt.Color("BCIs per million population:Q", scale=alt.Scale(type="log",domain=(0.01, 1000), clamp=True),
+                    title="BCIs per million population"),
+    tooltip=["BCIs per million population"],
+).properties(
+    title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
+)
+
+chart2 = alt.Chart(subset).mark_line(
+    point=True
+).encode(
+    x=alt.X("Year:N", axis=alt.Axis(title='Year')),
+    y=alt.Y("gghed_gdp:Q"),
+    color=alt.Color('CountryTerritoryArea:N')
+    tooltip=["gghed_gdp"]
+)
 
 # chart2 = alt.Chart(subset).mark_bar().encode(
 #     x=alt.X("sum(Pop)", title="Sum of Population Size", axis=alt.Axis(tickMinStep=50000000)),
@@ -72,9 +81,9 @@ subset = subset[subset["Bacterial Pathogen"] == bacteria]
 #     tooltip=("sum(Pop)","Country")
 # )
 
-# charttotal = alt.vconcat(chart, chart2).resolve_scale(
-#     color = "independent"
-# )
+charttotal = alt.vconcat(chart, chart2).resolve_scale(
+    color = "independent"
+)
 
 ### P2.5 ###
 
