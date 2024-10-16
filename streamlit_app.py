@@ -87,7 +87,7 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 
 ### P2.5 ###
 
-# st.altair_chart(charttotal, use_container_width=True)
+st.altair_chart(charttotal, use_container_width=True)
 
 # countries_in_subset = subset["Country"].unique()
 # if len(countries_in_subset) != len(countries):
