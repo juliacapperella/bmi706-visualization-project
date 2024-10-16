@@ -60,6 +60,8 @@ chart2 = alt.Chart(subset).mark_bar().encode(
     x=alt.X("mean(gghed_gdp)", title="Domestic Health Expenditure as Percent of GDP", axis=alt.Axis(tickMinStep=50000000)),
     y=alt.Y("Country", sort="-x"),
     tooltip=[alt.Tooltip("mean(gghed_gdp)", title="Health Expenditure"),"Country"],
+).properties(
+    title=f"Domestic Health Expenditure as Percent of GDP in {year}",
 )
 
 ## Create chart 3 -- (unlinked) line chart of year and health expenditure
@@ -94,7 +96,9 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 )
 
 ## Print linked chart and unlinked charts
+st.title("{year} Snapshot")
 st.altair_chart(charttotal, use_container_width=True)
+st.title("Trends Over Time")
 st.altair_chart(chart3|chart4, use_container_width=True)
 
 countries_in_subset = subset["Country"].unique()
