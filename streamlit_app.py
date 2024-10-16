@@ -41,6 +41,7 @@ default = [
 ]
 countries = st.multiselect("Countries",df["CountryTerritoryArea"].unique(), default)
 subset = subset[subset["CountryTerritoryArea"].isin(countries)]
+subset2 = df[df["CountryTerritoryArea"].isin(countries)]
 ### P2.3 ###
 
 
@@ -72,7 +73,7 @@ chart2 = alt.Chart(subset).mark_bar().encode(
     tooltip=["gghed_gdp","CountryTerritoryArea"],
 )
 
-chart3 = alt.Chart(subset).mark_line(
+chart3 = alt.Chart(subset2).mark_line(
     point=True
 ).encode(
     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
