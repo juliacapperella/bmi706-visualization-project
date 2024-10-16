@@ -64,6 +64,9 @@ chart2 = alt.Chart(subset).mark_bar().encode(
     title=f"Domestic Health Expenditure as Percent of GDP in {year}",
 )
 
+# Create brush for charts 3 & 4
+brush = alt.selection_interval( encodings=['x'])
+
 ## Create chart 3 -- (unlinked) line chart of year and health expenditure
 chart3 = alt.Chart(subset2).mark_line(
     point=True
@@ -75,6 +78,8 @@ chart3 = alt.Chart(subset2).mark_line(
 ).properties(
     title=f"Domestic Health Expenditure as Percent of GDP per year",
     width=300
+).add_selection(
+    brush
 )
 
 ## Create chart 4 -- (unlinked) line chart of year and BCI per million population
@@ -88,6 +93,8 @@ chart4 = alt.Chart(subset2).mark_line(
 ).properties(
     title=f"BCIs per million population per year",
     width=300
+).transform_filter(
+    brush
 )
 
 ## Combine linked charts
