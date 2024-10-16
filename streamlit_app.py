@@ -104,8 +104,9 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 ### P2.5 ###
 
 st.altair_chart(charttotal, use_container_width=True)
-st.altair_chart(chart3, use_container_width=True)
-st.altair_chart(chart4, use_container_width=True)
+linecharts = chart3 | chart4
+st.altair_chart(linecharts, use_container_width=True)
+#st.altair_chart(chart4, use_container_width=True)
 
 # countries_in_subset = subset["CountryTerritoryArea"].unique()
 # if len(countries_in_subset) != len(countries):
