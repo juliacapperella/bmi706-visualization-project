@@ -4,6 +4,9 @@ import streamlit as st
 
 ### P1.2 ###
 
+bci_df = pd.read_csv("https://raw.githubusercontent.com/juliacapperella/bmi706-visualization-project/refs/heads/main/final_data.csv")
+bci_df.head()
+
 @st.cache_data
 def load_data():
     cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
@@ -37,12 +40,6 @@ year = st.slider("Year", 2016, 2022)
 subset = df[df["Year"] == year]
 ### P2.1 ###
 
-
-### P2.2 ###
-# replace with st.radio
-sex = st.radio("Sex", ["M", "F"])
-subset = subset[subset["Sex"] == sex]
-### P2.2 ###
 
 
 ### P2.3 ###
@@ -118,5 +115,3 @@ if len(countries_in_subset) != len(countries):
 bci_df = pd.read_csv("final_data.csv")
 print(bci_df.head())
 
-bci_df = pd.read_csv("https://raw.githubusercontent.com/juliacapperella/bmi706-visualization-project/refs/heads/main/final_data.csv")
-bci_df.head()
