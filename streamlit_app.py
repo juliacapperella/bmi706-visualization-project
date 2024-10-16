@@ -94,8 +94,8 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 
 ## Print linked chart and unlinked charts
 st.altair_chart(charttotal, use_container_width=True)
-linecharts = chart3 | chart4
-st.altair_chart(linecharts, use_container_width=True)
+#linecharts = chart3 | chart4
+st.altair_chart(chart3|chart4, use_container_width=True)
 
 countries_in_subset = subset["Country"].unique()
 if len(countries_in_subset) != len(countries):
