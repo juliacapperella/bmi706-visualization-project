@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 ## Make the page wider
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 ## Load data set from github
 @st.cache_data
