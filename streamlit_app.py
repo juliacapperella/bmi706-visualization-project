@@ -71,7 +71,7 @@ chart2 = alt.Chart(subset).mark_line(
 ).encode(
     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
     y=alt.Y("gghed_gdp:Q"),
-    color=alt.Color('CountryTerritoryArea:N')
+    color=alt.Color('CountryTerritoryArea:N'),
     tooltip=["gghed_gdp"]
 )
 
