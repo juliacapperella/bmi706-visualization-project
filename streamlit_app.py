@@ -63,7 +63,7 @@ chart = alt.Chart(subset).mark_rect().encode(
                     title="BCIs per million population"),
     tooltip=["BCIs per million population"],
 ).properties(
-    title=f"BCIs per million population for in {year}",
+    title="BCIs per million population for in {year}",
 )
 
 chart2 = alt.Chart(subset).mark_bar().encode(
@@ -72,14 +72,14 @@ chart2 = alt.Chart(subset).mark_bar().encode(
     tooltip=("gghed_gdp","Country")
 )
 
-chart3 = alt.Chart(subset).mark_line(
-    point=True
-).encode(
-    x=alt.X("Year:N", axis=alt.Axis(title='Year')),
-    y=alt.Y("gghed_gdp:Q"),
-    color=alt.Color('CountryTerritoryArea:N'),
-    tooltip=["gghed_gdp"]
-)
+# chart3 = alt.Chart(subset).mark_line(
+#     point=True
+# ).encode(
+#     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
+#     y=alt.Y("gghed_gdp:Q"),
+#     color=alt.Color('CountryTerritoryArea:N'),
+#     tooltip=["gghed_gdp"]
+# )
 
 
 
@@ -90,7 +90,7 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 ### P2.5 ###
 
 st.altair_chart(charttotal, use_container_width=True)
-st.altair_chart(chart3, use_container_width=True)
+# st.altair_chart(chart3, use_container_width=True)
 
 countries_in_subset = subset["CountryTerritoryArea"].unique()
 if len(countries_in_subset) != len(countries):
