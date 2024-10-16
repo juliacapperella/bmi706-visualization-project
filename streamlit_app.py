@@ -80,6 +80,19 @@ chart3 = alt.Chart(subset2).mark_line(
     y=alt.Y("gghed_gdp:Q"),
     color=alt.Color('CountryTerritoryArea:N'),
     tooltip=["gghed_gdp"]
+).properties(
+    title=f"Health expenditures per year",
+)
+
+chart4 = alt.Chart(subset2).mark_line(
+    point=True
+).encode(
+    x=alt.X("Year:N", axis=alt.Axis(title='Year')),
+    y=alt.Y("BCIs per million population:Q"),
+    color=alt.Color('CountryTerritoryArea:N'),
+    tooltip=["BCIs per million population"]
+).properties(
+    title=f"BCIs per million population per year",
 )
 
 
@@ -92,6 +105,7 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 
 st.altair_chart(charttotal, use_container_width=True)
 st.altair_chart(chart3, use_container_width=True)
+st.altair_chart(chart4, use_container_width=True)
 
 # countries_in_subset = subset["CountryTerritoryArea"].unique()
 # if len(countries_in_subset) != len(countries):
