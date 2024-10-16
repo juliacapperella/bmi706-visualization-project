@@ -39,14 +39,14 @@ default = [
     "Madagascar",
     "Singapore"
 ]
-countries = st.multiselect("Countries",df["CountryTerritoryArea"], default)
+countries = st.multiselect("Countries",df["CountryTerritoryArea"].unique(), default)
 subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 ### P2.3 ###
 
 
 ### P2.4 ###
 # replace with st.selectbox
-bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"])
+bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 ### P2.4 ###
 
