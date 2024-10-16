@@ -96,7 +96,7 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 )
 
 ## Print linked chart and unlinked charts
-st.header("{year} Snapshot")
+st.header(f"{year} Snapshot")
 st.altair_chart(charttotal, use_container_width=True)
 st.header("Trends Over Time")
 st.altair_chart(chart3|chart4, use_container_width=True)
