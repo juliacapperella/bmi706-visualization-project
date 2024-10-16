@@ -31,72 +31,60 @@ subset = df[df["Year"] == year]
 # replace with st.multiselect
 # (hint: can use current hard-coded values below as as `default` for selector)
 default = [
-    "Austria",
-    "Germany",
-    "Iceland",
-    "Spain",
-    "Sweden",
-    "Thailand",
-    "Turkey",
+    "France",
+    "Libya",
+    "Argentina",
+    "Poland",
+    "United States of America",
+    "Madagascar",
+    "Singapore"
 ]
-countries = st.multiselect("Countries",df["Country"], default)
-subset = subset[subset["Country"].isin(countries)]
+countries = st.multiselect("Countries",df["CountryTerritoryArea"], default)
+subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 ### P2.3 ###
 
 
 ### P2.4 ###
 # replace with st.selectbox
-cancer = st.selectbox("Cancer",df["Cancer"])
-subset = subset[subset["Cancer"] == cancer]
+bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"])
+subset = subset[subset["Bacterial Pathogen"] == bacteria]
 ### P2.4 ###
 
 
 ### P2.5 ###
-ages = [
-    "Age <5",
-    "Age 5-14",
-    "Age 15-24",
-    "Age 25-34",
-    "Age 35-44",
-    "Age 45-54",
-    "Age 55-64",
-    "Age >64",
-]
  
-chart = alt.Chart(subset).mark_rect().encode(
-    x=alt.X("Age", sort=ages),
-    y=alt.Y("Country"),
-    color=alt.Color("Rate:Q", scale=alt.Scale(type="log",domain=(0.01, 1000), clamp=True),
-                    title="Mortality rate per 100k"),
-    tooltip=["Rate"],
-).properties(
-    title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
-)
+# chart = alt.Chart(subset).mark_rect().encode(
+#     x=alt.X("Age", sort=ages),
+#     y=alt.Y("Country"),
+#     color=alt.Color("Rate:Q", scale=alt.Scale(type="log",domain=(0.01, 1000), clamp=True),
+#                     title="Mortality rate per 100k"),
+#     tooltip=["Rate"],
+# ).properties(
+#     title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
+# )
 
-chart2 = alt.Chart(subset).mark_bar().encode(
-    x=alt.X("sum(Pop)", title="Sum of Population Size", axis=alt.Axis(tickMinStep=50000000)),
-    y=alt.Y("Country", sort="-x"),
-    tooltip=("sum(Pop)","Country")
-)
+# chart2 = alt.Chart(subset).mark_bar().encode(
+#     x=alt.X("sum(Pop)", title="Sum of Population Size", axis=alt.Axis(tickMinStep=50000000)),
+#     y=alt.Y("Country", sort="-x"),
+#     tooltip=("sum(Pop)","Country")
+# )
 
-charttotal = alt.vconcat(chart, chart2).resolve_scale(
-    color = "independent"
-)
+# charttotal = alt.vconcat(chart, chart2).resolve_scale(
+#     color = "independent"
+# )
 
 ### P2.5 ###
 
-st.altair_chart(charttotal, use_container_width=True)
+# st.altair_chart(charttotal, use_container_width=True)
 
-countries_in_subset = subset["Country"].unique()
-if len(countries_in_subset) != len(countries):
-    if len(countries_in_subset) == 0:
-        st.write("No data avaiable for given subset.")
-    else:
-        missing = set(countries) - set(countries_in_subset)
-        st.write("No data available for " + ", ".join(missing) + ".")
+# countries_in_subset = subset["Country"].unique()
+# if len(countries_in_subset) != len(countries):
+#     if len(countries_in_subset) == 0:
+#         st.write("No data avaiable for given subset.")
+#     else:
+#         missing = set(countries) - set(countries_in_subset)
+#         st.write("No data available for " + ", ".join(missing) + ".")
 
 ### Project Changes ###
 
-bci_df = pd.read_csv("final_data.csv")
-print(bci_df.head())
 
