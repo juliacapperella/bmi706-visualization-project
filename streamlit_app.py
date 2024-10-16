@@ -63,13 +63,13 @@ chart = alt.Chart(subset).mark_rect().encode(
                     title="BCIs per million population"),
     tooltip=["BCIs per million population"],
 ).properties(
-    title="BCIs per million population in {year}",
+    title=f"BCIs per million population in {year}",
 )
 
 chart2 = alt.Chart(subset).mark_bar().encode(
     x=alt.X("gghed_gdp", title="Domestic Health Expenditure as Percent of GDP", axis=alt.Axis(tickMinStep=50000000)),
     y=alt.Y("CountryTerritoryArea", sort="-x"),
-    tooltip=("gghed_gdp","Country")
+    tooltip=["gghed_gdp","Country"]
 )
 
 # chart3 = alt.Chart(subset).mark_line(
