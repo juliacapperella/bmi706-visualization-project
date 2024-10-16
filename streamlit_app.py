@@ -65,13 +65,13 @@ chart2 = alt.Chart(subset).mark_bar().encode(
 )
 
 # Create brush for charts 3 & 4
-brush = alt.selection_interval( encodings=['x'])
+brush = alt.selection_interval(encodings=['x'])
 
 ## Create chart 3 -- (unlinked) line chart of year and health expenditure
 chart3 = alt.Chart(subset2).mark_line(
-    #point=True
+    point=True
 ).encode(
-    x=alt.X("Year:N", axis=alt.Axis(title='Year')),
+    x=alt.X("Year:O", axis=alt.Axis(title='Year')),
     y=alt.Y("gghed_gdp:Q", axis=alt.Axis(title='Health Expenditure')),
     color=alt.Color('Country:N'),
     tooltip=[alt.Tooltip("gghed_gdp", title="Health Expenditure as Percent of GDP")]
@@ -86,7 +86,7 @@ chart3 = alt.Chart(subset2).mark_line(
 chart4 = alt.Chart(subset2).mark_line(
     point=True
 ).encode(
-    x=alt.X("Year:N", axis=alt.Axis(title='Year')),
+    x=alt.X("Year:O", axis=alt.Axis(title='Year')),
     y=alt.Y("sum(BCIs per million population):Q", axis=alt.Axis(title="BCIs per million population")),
     color=alt.Color('Country:N'),
     tooltip=[alt.Tooltip("sum(BCIs per million population)", title = "BCIs per million pop")]
