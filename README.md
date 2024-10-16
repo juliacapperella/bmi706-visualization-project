@@ -1,3 +1,3 @@
 # bmi706-visualization-project
 
-Hello World
+Hello World!
