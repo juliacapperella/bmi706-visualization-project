@@ -88,9 +88,9 @@ chart4 = alt.Chart(subset2).mark_line(
     point=True
 ).encode(
     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
-    y=alt.Y("BCIs per million population:Q"),
+    y=alt.Y("sum(BCIs per million population):Q"),
     color=alt.Color('CountryTerritoryArea:N'),
-    tooltip=["BCIs per million population"]
+    tooltip=["sum(BCIs per million population)"]
 ).properties(
     title=f"BCIs per million population per year",
 )
