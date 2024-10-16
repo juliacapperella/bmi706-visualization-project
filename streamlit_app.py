@@ -41,7 +41,7 @@ infection = st.sidebar.selectbox("Infectious Syndrome",df["Infectious Syndrome"]
 subset = subset[subset["Infectious Syndrome"] == infection]
 
 ## Make bacterial pathogen selector
-bacteria = st.sidebar.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
+bacteria = st.sidebar.selectbox("Bacterial Pathogen",subset["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 
 ## Create chart 1 -- heat map of BCI for selection options
