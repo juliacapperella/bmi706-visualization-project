@@ -116,3 +116,6 @@ if len(countries_in_subset) != len(countries):
 
 bci_df = pd.read_csv("final_data.csv")
 print(bci_df.head())
+
+bci_df = pd.read_csv("https://raw.githubusercontent.com/juliacapperella/bmi706-visualization-project/refs/heads/main/final_data.csv")
+bci_df.head()
