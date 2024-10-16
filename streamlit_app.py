@@ -16,7 +16,7 @@ df = load_data()
 
 ## Make streamlit app
 st.write("## Antimicrobial Resistance")
-st.text('This visualization tool allows user to observe the BCIs (bacteriologically confirmed infections) of certain bacterial pathogens among different infectious syndromes and antibiotic groups. Users can also compare this data with health expenditure data. Data come from the WHO Global Antimicrobial Resistance and Use Surveillance System (GLASS).')
+st.markdown('This visualization tool allows user to observe the BCIs (bacteriologically confirmed infections) of certain bacterial pathogens among different infectious syndromes and antibiotic groups. Users can also compare this data with health expenditure data. Data come from the WHO Global Antimicrobial Resistance and Use Surveillance System (GLASS).')
 
 ## Make year slider
 year = st.sidebar.slider("Year", df["Year"].min(), df["Year"].max(), value = 2020)
