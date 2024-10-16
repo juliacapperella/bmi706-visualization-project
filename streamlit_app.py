@@ -46,7 +46,10 @@ subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 
 ### P2.4 ###
 # replace with st.selectbox
-bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
+infection = st.selectbox("Infectious Syndrome",df["Infectious Syndrome"].unique())
+subset = subset[subset["Infectious Syndrome"] == infection]
+
+ = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 ### P2.4 ###
 
@@ -85,6 +88,5 @@ subset = subset[subset["Bacterial Pathogen"] == bacteria]
 #         missing = set(countries) - set(countries_in_subset)
 #         st.write("No data available for " + ", ".join(missing) + ".")
 
-### Project Changes ###
 
 
