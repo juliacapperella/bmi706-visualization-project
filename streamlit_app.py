@@ -16,12 +16,12 @@ df = load_data()
 ### P1.2 ###
 
 
-st.write("## Age-specific cancer mortality rates")
+st.write("## Antimicrobial Resistance")
 
 ### P2.1 ###
 # replace with st.slider
-#year = st.slider("Year", df["Year"].min(), df["Year"].max())
-year = st.slider("Year", 2016, 2022)
+year = st.slider("Year", df["Year"].min(), df["Year"].max())
+# year = st.slider("Year", 2016, 2022)
 subset = df[df["Year"] == year]
 ### P2.1 ###
 
