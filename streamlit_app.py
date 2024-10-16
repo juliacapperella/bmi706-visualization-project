@@ -2,9 +2,10 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
-### P1.2 ###
+## Make the page wider
+st.set_page_config(layout="wide")
 
-
+## Load data set from github
 @st.cache_data
 def load_data():
     bci_df = pd.read_csv("https://raw.githubusercontent.com/juliacapperella/bmi706-visualization-project/refs/heads/main/final_data.csv")
@@ -13,49 +14,37 @@ def load_data():
 
 df = load_data()
 
-### P1.2 ###
-
-
+## Make streamlit app
 st.write("## Antimicrobial Resistance")
 
-### P2.1 ###
-# replace with st.slider
-year = st.sidebar.slider("Year", df["Year"].min(), df["Year"].max())
+## Make year slider
+year = st.sidebar.slider("Year", df["Year"].min(), df["Year"].max(), value = 2020)
 subset = df[df["Year"] == year]
-### P2.1 ###
 
 
-
-### P2.3 ###
-# replace with st.multiselect
-# (hint: can use current hard-coded values below as as `default` for selector)
+## Choose default countries for selector
 default = [
-    "France",
-    "Libya",
+    "Bangladesh",
+    "Ethiopia",
     "Argentina",
-    "Poland",
-    "United States of America",
-    "Madagascar",
-    "Singapore"
+    "Singapore",
+    "Sweden"
 ]
+
+## Make country selector
 countries = st.sidebar.multiselect("Countries",df["CountryTerritoryArea"].unique(), default)
 subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 subset2 = df[df["CountryTerritoryArea"].isin(countries)]
-### P2.3 ###
 
-
-### P2.4 ###
-# replace with st.selectbox
+## Make infectious syndrome selector
 infection = st.sidebar.selectbox("Infectious Syndrome",df["Infectious Syndrome"].unique())
 subset = subset[subset["Infectious Syndrome"] == infection]
 
+## Make bacterial pathogen selector
 bacteria = st.sidebar.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
-### P2.4 ###
 
-
-### P2.5 ###
- 
+## Create chart 1 -- heat map of BCI for selection options
 chart = alt.Chart(subset).mark_rect().encode(
     x=alt.X("Antibiotic Group"),
     y=alt.Y("CountryTerritoryArea"),
@@ -66,12 +55,14 @@ chart = alt.Chart(subset).mark_rect().encode(
     title=f"BCIs per million population in {year}",
 )
 
+## Create chart 2 -- bar chart of health expenditure for selection options
 chart2 = alt.Chart(subset).mark_bar().encode(
     x=alt.X("gghed_gdp", title="Domestic Health Expenditure as Percent of GDP", axis=alt.Axis(tickMinStep=50000000)),
     y=alt.Y("CountryTerritoryArea", sort="-x"),
     tooltip=["gghed_gdp","CountryTerritoryArea"],
 )
 
+## Create chart 3 -- (unlinked) line chart of year and health expenditure
 chart3 = alt.Chart(subset2).mark_line(
     point=True
 ).encode(
@@ -83,6 +74,7 @@ chart3 = alt.Chart(subset2).mark_line(
     title=f"Health expenditures per year",
 )
 
+## Create chart 4 -- (unlinked) line chart of year and BCI per million population
 chart4 = alt.Chart(subset2).mark_line(
     point=True
 ).encode(
@@ -94,18 +86,15 @@ chart4 = alt.Chart(subset2).mark_line(
     title=f"BCIs per million population per year",
 )
 
-
-
+## Combine linked charts
 charttotal = alt.vconcat(chart, chart2).resolve_scale(
     color = "independent"
 )
 
-### P2.5 ###
-
+## Print linked chart and unlinked charts
 st.altair_chart(charttotal, use_container_width=True)
 linecharts = chart3 | chart4
 st.altair_chart(linecharts, use_container_width=True)
-#st.altair_chart(chart4, use_container_width=True)
 
 # countries_in_subset = subset["CountryTerritoryArea"].unique()
 # if len(countries_in_subset) != len(countries):
