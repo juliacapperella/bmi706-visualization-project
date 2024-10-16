@@ -44,6 +44,9 @@ subset = subset[subset["Infectious Syndrome"] == infection]
 bacteria = st.sidebar.selectbox("Bacterial Pathogen",subset["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 
+# Create brush for charts 3 & 4
+brush = alt.selection_interval(encodings=['x'])
+
 ## Create chart 1 -- heat map of BCI for selection options
 chart = alt.Chart(subset).mark_rect().encode(
     x=alt.X("Antibiotic Group"),
@@ -63,9 +66,6 @@ chart2 = alt.Chart(subset).mark_bar().encode(
 ).properties(
     title=f"Domestic Health Expenditure as Percent of GDP in {year}",
 )
-
-# Create brush for charts 3 & 4
-brush = alt.selection_interval(encodings=['x'])
 
 ## Create chart 3 -- (unlinked) line chart of year and health expenditure
 chart3 = alt.Chart(subset2).mark_line(
