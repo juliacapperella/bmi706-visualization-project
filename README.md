@@ -1,8 +1,8 @@
 # bmi706-visualization-project
 
-BMI 706: Visualization Project Dataset & Tasks
-Group: Data Ducks
-Members: Claire Chu, Julia Capperella
+- BMI 706: Visualization Project
+- Group: Data Ducks
+- Members: Claire Chu, Julia Capperella
 
 This visualization combines several datasets from the WHO Global Antimicrobial Resistance and Use Surveillance System (GLASS) that are part of the first global collaboration to standardize antimicrobial resistance (AMR) surveillance. GLASS contains epidemiological, clinical, and population-level data, collected through results from laboratory clinical specimens. GLASS-AMR provides information about a set of pathogens that cause common bacterial infections in humans. The data includes information from 2016 until 2022, and countries from all WHO regions are included. Furthermore, it incorporates other datasets which include information on Health Financing from WHO’s Global Health Observatory and information on GDP per country. The health financing datasets  include information about how much money each country is spending on health care relative to their GDP and general government spending.
 
