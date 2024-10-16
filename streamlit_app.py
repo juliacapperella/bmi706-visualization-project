@@ -49,7 +49,7 @@ subset = subset[subset["CountryTerritoryArea"].isin(countries)]
 infection = st.selectbox("Infectious Syndrome",df["Infectious Syndrome"].unique())
 subset = subset[subset["Infectious Syndrome"] == infection]
 
- = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
+bacteria = st.selectbox("Bacterial Pathogen",df["Bacterial Pathogen"].unique())
 subset = subset[subset["Bacterial Pathogen"] == bacteria]
 ### P2.4 ###
 
