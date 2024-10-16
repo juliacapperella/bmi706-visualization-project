@@ -66,7 +66,13 @@ chart = alt.Chart(subset).mark_rect().encode(
     title=f"BCIs per million population for in {year}",
 )
 
-chart2 = alt.Chart(subset).mark_line(
+chart2 = alt.Chart(subset).mark_bar().encode(
+    x=alt.X("gghed_gdp", title="Domestic Health Expenditure as % GDP", axis=alt.Axis(tickMinStep=50000000)),
+    y=alt.Y("CountryTerritoryArea", sort="-x"),
+    tooltip=("gghed_gdp","Country")
+)
+
+chart3 = alt.Chart(subset).mark_line(
     point=True
 ).encode(
     x=alt.X("Year:N", axis=alt.Axis(title='Year')),
@@ -75,11 +81,7 @@ chart2 = alt.Chart(subset).mark_line(
     tooltip=["gghed_gdp"]
 )
 
-# chart2 = alt.Chart(subset).mark_bar().encode(
-#     x=alt.X("sum(Pop)", title="Sum of Population Size", axis=alt.Axis(tickMinStep=50000000)),
-#     y=alt.Y("Country", sort="-x"),
-#     tooltip=("sum(Pop)","Country")
-# )
+
 
 charttotal = alt.vconcat(chart, chart2).resolve_scale(
     color = "independent"
@@ -88,14 +90,15 @@ charttotal = alt.vconcat(chart, chart2).resolve_scale(
 ### P2.5 ###
 
 st.altair_chart(charttotal, use_container_width=True)
+st.altair_chart(chart3, use_container_width=True)
 
-# countries_in_subset = subset["Country"].unique()
-# if len(countries_in_subset) != len(countries):
-#     if len(countries_in_subset) == 0:
-#         st.write("No data avaiable for given subset.")
-#     else:
-#         missing = set(countries) - set(countries_in_subset)
-#         st.write("No data available for " + ", ".join(missing) + ".")
+countries_in_subset = subset["CountryTerritoryArea"].unique()
+if len(countries_in_subset) != len(countries):
+    if len(countries_in_subset) == 0:
+        st.write("No data avaiable for given subset.")
+    else:
+        missing = set(countries) - set(countries_in_subset)
+        st.write("No data available for " + ", ".join(missing) + ".")
 
 
 
