@@ -63,7 +63,7 @@ chart = alt.Chart(subset).mark_rect().encode(
                     title="BCIs per million population"),
     tooltip=["BCIs per million population"],
 ).properties(
-    title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
+    title=f"BCIs per million population for in {year}",
 )
 
 chart2 = alt.Chart(subset).mark_line(
